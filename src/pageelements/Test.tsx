@@ -30,9 +30,9 @@ const MyComponent: React.FC = () => {
 };
 
 //Code for POST Request to an endpoint to the Backend
-const AddBookForm: React.FC = () => {
+/*const AddBookForm: React.FC = () => {
     const [title, setTitle] = useState('');
-    const [author, setAuthor] = useState('');
+    const [author, setAuthor] = useState('')
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -70,7 +70,7 @@ const AddBookForm: React.FC = () => {
             <input type="submit" value="Submit" />
         </form>
     );
-};
+};*/
 
 const AddUserOrderForm: React.FC = () => {
     const [first_name, setFirstName] = useState('');
