@@ -76,17 +76,19 @@ const AddUserOrderForm: React.FC = () => {
     const [first_name, setFirstName] = useState('');
     const [last_name, setLastName] = useState('');
     const [email, setEmail] = useState('');
+    const [phone_number, setPhone] = useState('');
     const [country, setCountry] = useState('');
     const [city, setCity] = useState('');
     const [zipcode, setZipcode] = useState('');
     const [address1, setAddress1] = useState('');
     const [address2, setAddress2] = useState('');
+    const [productIds, setProductIds] = useState('');
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
         const url = 'http://localhost:2000/add_user_order/';
-        const data = { first_name, last_name, email, country, city, zipcode, address1, address2 };
+        const data = { first_name, last_name, email, phone_number, country, city, zipcode, address1, address2, product_ids: productIds.split(',').map(Number) };
 
         try {
             const response = await fetch(url, {
@@ -109,37 +111,45 @@ const AddUserOrderForm: React.FC = () => {
         <form onSubmit={handleSubmit}>
             <label>
                 First Name:
-                <input type="text" value={first_name} onChange={e => setFirstName(e.target.value)} />
+                <input type="text" value={first_name} onChange={e => setFirstName(e.target.value)}/>
             </label>
             <label>
                 Last Name:
-                <input type="text" value={last_name} onChange={e => setLastName(e.target.value)} />
+                <input type="text" value={last_name} onChange={e => setLastName(e.target.value)}/>
             </label>
             <label>
                 Email:
-                <input type="text" value={email} onChange={e => setEmail(e.target.value)} />
+                <input type="text" value={email} onChange={e => setEmail(e.target.value)}/>
+            </label>
+            <label>
+                Phone Number:
+                <input type="text" value={phone_number} onChange={e => setPhone(e.target.value)}/>
             </label>
             <label>
                 Country:
-                <input type="text" value={country} onChange={e => setCountry(e.target.value)} />
+                <input type="text" value={country} onChange={e => setCountry(e.target.value)}/>
             </label>
             <label>
                 City:
-                <input type="text" value={city} onChange={e => setCity(e.target.value)} />
+                <input type="text" value={city} onChange={e => setCity(e.target.value)}/>
             </label>
             <label>
                 Zipcode:
-                <input type="text" value={zipcode} onChange={e => setZipcode(e.target.value)} />
+                <input type="text" value={zipcode} onChange={e => setZipcode(e.target.value)}/>
             </label>
             <label>
                 Address1:
-                <input type="text" value={address1} onChange={e => setAddress1(e.target.value)} />
+                <input type="text" value={address1} onChange={e => setAddress1(e.target.value)}/>
             </label>
             <label>
                 Address2:
-                <input type="text" value={address2} onChange={e => setAddress2(e.target.value)} />
+                <input type="text" value={address2} onChange={e => setAddress2(e.target.value)}/>
             </label>
-            <input type="submit" value="Submit" />
+            <label>
+                Product IDs:
+                <input type="text" value={productIds} onChange={e => setProductIds(e.target.value)} placeholder="Product IDs (comma separated)"/>
+            </label>
+            <input type="submit" value="Submit"/>
         </form>
     );
 };
@@ -148,7 +158,7 @@ const AddUserOrderForm: React.FC = () => {
 function Start() {
     return (
         <>
-            <MyComponent/>
+        <MyComponent/>
             <AddUserOrderForm/>
         </>
     )
