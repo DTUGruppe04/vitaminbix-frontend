@@ -87,7 +87,7 @@ const AddUserOrderForm: React.FC = () => {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
-        const url = 'http://localhost:2000/add_user_order/';
+        const url = 'http://172.25.73.238/api/add_user_order/';
         const data = { first_name, last_name, email, phone_number, country, city, zipcode, address1, address2, product_ids: productIds.split(',').map(Number) };
 
         try {
@@ -95,6 +95,7 @@ const AddUserOrderForm: React.FC = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': 'Token dde759fe625ab0a29966c08fa892fadfe8f13967' // This is the API key
                     // 'X-CSRFToken': csrftoken  // uncomment this line if you're using CSRF protection
                 },
                 body: JSON.stringify(data),
